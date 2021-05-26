@@ -52,6 +52,12 @@ public class BootStrapData implements CommandLineRunner {
         addisonWesley.setAddress(addisonAddress);
         addisonAddress.setPublisher(addisonWesley);
 
+        ddd.setPublisher(addisonWesley);
+        addisonWesley.getBooks().add(ddd);
+
+        noEJB.setPublisher(addisonWesley);
+        addisonWesley.getBooks().add(noEJB);
+
         publisherRepository.save(addisonWesley);
         addressRepository.save(addisonAddress);
 
@@ -60,5 +66,6 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println("Number of Authors: " + authorRepository.count());
         System.out.println("Number of Addresses: " + addressRepository.count());
         System.out.println("Number of Publishers: " + publisherRepository.count());
+        System.out.println("Publisher number of books: " + addisonWesley.getBooks().size());
     }
 }
