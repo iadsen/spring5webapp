@@ -3,6 +3,8 @@ package guru.springframework.spring5webapp.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -16,6 +18,10 @@ public class Publisher {
 
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
+
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     public Publisher() {}
 

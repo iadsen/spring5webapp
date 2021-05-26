@@ -21,6 +21,9 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors;
 
+    @ManyToOne
+    private Publisher publisher;
+
     public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
@@ -35,7 +38,6 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
                 '}';
     }
 
